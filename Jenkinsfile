@@ -1,9 +1,14 @@
-pipeline { 
+pipeline {
     agent any
     stages {
-        stage('Build step') {
+        stage('Cleanup and Build Image') {
             steps {
-                sh "sh setup.sh"
+                sh "sh build.sh"
+            }
+        }
+        stage('Modify Application and Run Container') {
+            steps {
+                sh "sh run.sh"
             }
         }
     }
